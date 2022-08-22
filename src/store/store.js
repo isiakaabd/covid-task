@@ -6,5 +6,3 @@ export const store = configureStore({
     fetchData: dataReducer,
   },
 });
-
-console.log(store.getState());
