@@ -82,9 +82,8 @@ const CardItem = ({ data, name }) => {
   );
 };
 CardItem.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  lastUpdate: PropTypes.string.isRequired,
 };
 
 export default CardItem;
