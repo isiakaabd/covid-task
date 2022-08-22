@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Images from "components/assests";
 
 const CardItem = ({ data, name }) => {
-  const { death } = Images; // importing images
+  const { recovered, death, infected } = Images; // importing images
   return (
     <Grid
       item
@@ -22,6 +22,9 @@ const CardItem = ({ data, name }) => {
             },
             "&.Infected": {
               borderBottom: "10px solid rgba(75,192,192,0.2)",
+            },
+            "&.Confirmed Cases": {
+              borderBottom: "10px solid  rgba(0,255,0,1)",
             },
 
             "&.Recovered": {
@@ -47,7 +50,17 @@ const CardItem = ({ data, name }) => {
                 },
               }}
               component="img"
-              image={death}
+              image={
+                name === "Deaths"
+                  ? death
+                  : name === "Active Cases"
+                  ? infected
+                  : name === "Recovered"
+                  ? recovered
+                  : name === "Tested Cases"
+                  ? infected
+                  : infected
+              }
             />
           </Grid>
           <CountUp

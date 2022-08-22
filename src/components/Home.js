@@ -8,11 +8,23 @@ const Home = ({ data }) => {
   const [totalConfirmedCases, setTotalConfirmedCases] = useState(0);
   const [discharged, setDischarged] = useState(0);
   const [totalSamplesTested, setTotalSamplesTested] = useState(0);
+  const correctValue = (value) => {
+    let x = value.split("");
+    let arr = [];
+    //eslint-disable-next-line
+    x.map((i) => {
+      if (i !== ",") {
+        return arr.push(i);
+      }
+    });
+    return Number(arr.join(""));
+  };
+  console.log(correctValue(data?.data?.totalSamplesTested));
   useEffect(() => {
     setDeath(data?.data?.death);
     setTotalActiveCases(data?.data?.totalActiveCases);
     setTotalConfirmedCases(data?.data?.totalConfirmedCases);
-    setTotalSamplesTested(Number(data?.data?.totalSamplesTested));
+    setTotalSamplesTested(correctValue(data?.data?.totalSamplesTested));
     setDischarged(data?.data?.discharged);
   }, [data]);
   // importing image files
